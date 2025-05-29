@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.png') }}" type="image/png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>SmartPi Control Panel</title>
+</head>
+<body>
+    <main class=" ">
+        <div class="column primary">
+            <div class="row justifyContent-center column-1600">
+                <div class="column justifyContent-center alignItems-center">
+                    <div class="column alignItems-center justifyContent-center padding ">
+                        <h1>SmartPi Control Panel</h1>
+                        <div class="row">
+                            <a class="button" href="/led">LED Strip Control</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

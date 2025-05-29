@@ -1,0 +1,97 @@
+:root{
+    --textColor: #FFFFFF;
+    --light-bg: #ececec;
+    --dark-bg: #1F1F1F;
+    --dark-chat-bg: #171717;
+    --body-color: #0D0D0D;
+    --user-bg-color: #262626;
+    --assistant-code-bg-color: #4e4e4e;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--body-color);
+    color: white;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+a{
+    text-decoration: none;
+}
+
+.button{
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: black;
+    border: none;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover{
+
+    background-color: var(--dark-bg);
+    /*border: 1px solid  white;*/
+    color: white;
+}
+
+.button:active{
+    background-color: var(--light-bg);
+    color: black;
+}
+
+.justifyContent-center{
+    justify-content: center;
+}
+
+.alignItems-center{
+    align-items: center;
+
+}
+
+.padding{
+    padding: 1em;
+}
+
+::-webkit-scrollbar {
+    width: 0.7em;
+}
+
+::-webkit-scrollbar-track {
+    /*border-radius: 8px;*/
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: var(--user-bg-color);
+}
+
+@media screen and (max-width: 768px) {
+
+}

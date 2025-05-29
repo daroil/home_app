@@ -1,4 +1,4 @@
-sudo apt install screen
+sudo apt install screen -y
 ## Download and install nvm:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 #
@@ -15,6 +15,7 @@ nvm current # Should print "v22.15.0".
 ## Verify npm version:
 npm -v # Should print "10.9.2".
 
+sudo apt install python3.10-venv -y
 
 #create venv
 python3 -m venv venv

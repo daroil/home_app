@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.png') }}" type="image/png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>SmartPi Control Panel</title>
+
+{#<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/> <!-- 'monolith' theme -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
+</head>
+<body>
+    <main class=" ">
+        <div class="column primary">
+            <div class="row justifyContent-center column-1600">
+                <div class="column justifyContent-center alignItems-center">
+                    <div class="column  padding ">
+                        <h1>LED Strip Control</h1>
+                            <label for="color">Choose color:</label>
+                             <div id="color-picker"></div>
+{#                            <input type="color" id="color" name="color" required>#}
+                            <button class="button" id="rainbow">Rainbow</button>
+                            <a class="button" href="/">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+const pickr = Pickr.create({
+    el: '#color-picker',
+    theme: 'monolith', // or 'monolith', 'nano'
+
+    default: '#BA5D1D',
+
+    components: {
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        interaction: {
+            rgba: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+pickr.on('change', (color1, instance) =>  {
+  const color = pickr.getColor().toRGBA();
+
+  const data = {
+    red: Math.round(color[0]),
+    green: Math.round(color[1]),
+    blue: Math.round(color[2])
+  };
+  console.log(data);
+
+  fetch('/send_color', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.text())
+  .then(result => console.log('Server Response:', result))
+  .catch(error => console.error('Error sending color:', error));
+});
+
+document.getElementById('rainbow').addEventListener('click', () => {
+    fetch('/rainbow', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.text())
+  .then(result => console.log('Server Response:', result))
+  .catch(error => console.error('Error sending color:', error));
+})
+
+</script>
+</html>
